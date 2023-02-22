@@ -8,7 +8,5 @@ if [[ ! -d "$module_path" ]]; then
   echo "Path does not exist: \"$module_path\""
   exit 1
 fi
-if [ "$TF_PARAM_OUTPUT_AS_JSON" = "1" ]; then
-  set -- "$@" -json
-fi
-terraform -chdir="$module_path" fmt -check -diff "$@"
+
+terraform -chdir="$module_path" output -json=${TF_PARAM_OUTPUT_AS_JSON} >> ${TF_PARAM_OUTPUTS_OUT}

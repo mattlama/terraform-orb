@@ -14,6 +14,10 @@ parameters:
     description: "Set output format to json"
     type: boolean
     default: false
+  out:
+    type: string
+    description: The file path to save your terraform output to.
+    default: "tf.outputs"
 
 steps:
   - run:
@@ -22,4 +26,5 @@ steps:
       environment:
         TF_PARAM_MOD_PATH: << parameters.path >>
         TF_PARAM_OUTPUT_AS_JSON: << parameters.json >>
+        TF_PARAM_OUTPUTS_OUT: << parameters.out >>
       command: <<include(scripts/output.sh)>>

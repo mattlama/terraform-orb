@@ -22,6 +22,10 @@ parameters:
     type: "boolean"
     description: "Set output format to json"
     default: false
+  out:
+    type: string
+    description: The file path to save your terraform output to.
+    default: "tf.outputs"
   tag:
     description: "Specify the Terraform Docker image tag for the executor"
     type: "string"
@@ -54,3 +58,4 @@ steps:
       path: << parameters.path >>
       json: << parameters.json >>
       timeout: <<parameters.timeout>>
+      out: << parameters.out >>
